@@ -45,6 +45,7 @@ import http.server
 import requests
 from requests.exceptions import ConnectionError
 from urllib.parse import unquote, parse_qs
+import os
 
 memory = {}
 
@@ -146,6 +147,6 @@ class Shortener(http.server.BaseHTTPRequestHandler):
 
 
 if __name__ == '__main__':
-    server_address = ('', 8000)
+    server_address = int(os.environ.get('PORT', 8000))
     httpd = http.server.HTTPServer(server_address, Shortener)
     httpd.serve_forever()
