@@ -1,15 +1,12 @@
 from peewee import *
 import datetime
-import os
 
-user = os.environ['POSTGRES_USER']
-password = os.environ['POSTGRES_PASSWORD']
-db_name = os.environ['POSTGRES_DB']
-host = os.environ['POSTGRES_HOST']
+import settings
+
 
 db_handler = PostgresqlDatabase(
-    db_name, user=user,
-    host=host, password=password
+    settings.db_name, user=settings.user,
+    host=settings.host, password=settings.password
 )
 
 
